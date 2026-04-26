@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.pins
+
+# Xcode
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Claude Code (per-developer overrides)
+.claude/settings.local.json
+
+# OMC runtime state (regenerated each session, at any depth)
+**/.omc/state/

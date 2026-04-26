@@ -1,0 +1,53 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/anthropics/claude-plugins-official.git"
+    },
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-04-24T03:53:04.490Z"
+  },
+  "ralph-marketplace": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/snarktank/ralph.git"
+    },
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/ralph-marketplace",
+    "lastUpdated": "2026-04-26T01:52:17.910Z",
+    "autoUpdate": true
+  },
+  "toby-plugins": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/tobyilee/toby-plugins.git"
+    },
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/toby-plugins",
+    "lastUpdated": "2026-04-26T01:52:18.507Z",
+    "autoUpdate": true
+  },
+  "openai-codex": {
+    "source": {
+      "source": "github",
+      "repo": "openai/codex-plugin-cc"
+    },
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/openai-codex",
+    "lastUpdated": "2026-04-01T04:08:37.689Z"
+  },
+  "harness-marketplace": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/revfactory/harness.git"
+    },
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/harness-marketplace",
+    "lastUpdated": "2026-04-26T01:33:44.227Z",
+    "autoUpdate": true
+  },
+  "omc": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git"
+    },
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/omc",
+    "lastUpdated": "2026-04-08T09:49:09.058Z"
+  }
+}

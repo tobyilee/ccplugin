@@ -1,0 +1,10 @@
+Usage: claude plugin uninstall|remove [options] <plugin>
+
+Uninstall an installed plugin
+
+Options:
+  -h, --help           Display help for command
+  --keep-data          Preserve the plugin's persistent data directory
+                       (~/.claude/plugins/data/{id}/)
+  -s, --scope <scope>  Uninstall from scope: user, project, or local (default:
+                       "user")

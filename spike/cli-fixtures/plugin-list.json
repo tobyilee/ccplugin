@@ -1,0 +1,280 @@
+[
+  {
+    "id": "code-simplifier@claude-plugins-official",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/code-simplifier/1.0.0",
+    "installedAt": "2026-03-11T06:21:46.091Z",
+    "lastUpdated": "2026-03-11T06:21:46.091Z"
+  },
+  {
+    "id": "codex@openai-codex",
+    "version": "1.0.2",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/openai-codex/codex/1.0.2",
+    "installedAt": "2026-04-01T04:08:45.916Z",
+    "lastUpdated": "2026-04-01T04:08:45.916Z"
+  },
+  {
+    "id": "commit-commands@claude-plugins-official",
+    "version": "unknown",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/commit-commands/unknown",
+    "installedAt": "2026-03-11T06:21:46.100Z",
+    "lastUpdated": "2026-04-08T05:03:50.869Z"
+  },
+  {
+    "id": "discord@claude-plugins-official",
+    "version": "0.0.4",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/discord/0.0.4",
+    "installedAt": "2026-03-20T11:16:34.439Z",
+    "lastUpdated": "2026-03-24T06:38:41.191Z",
+    "mcpServers": {
+      "discord": {
+        "command": "bun",
+        "args": [
+          "run",
+          "--cwd",
+          "${CLAUDE_PLUGIN_ROOT}",
+          "--shell=bun",
+          "--silent",
+          "start"
+        ]
+      }
+    }
+  },
+  {
+    "id": "explanatory-output-style@claude-plugins-official",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/explanatory-output-style/1.0.0",
+    "installedAt": "2026-03-09T08:18:47.378Z",
+    "lastUpdated": "2026-03-29T07:32:26.504Z"
+  },
+  {
+    "id": "feature-dev@claude-plugins-official",
+    "version": "unknown",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+    "installedAt": "2026-03-11T06:21:46.088Z",
+    "lastUpdated": "2026-04-08T05:03:50.870Z"
+  },
+  {
+    "id": "firecrawl@claude-plugins-official",
+    "version": "1.0.8",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/firecrawl/1.0.8",
+    "installedAt": "2026-03-11T06:21:48.257Z",
+    "lastUpdated": "2026-04-09T00:35:55.950Z"
+  },
+  {
+    "id": "frontend-design@claude-plugins-official",
+    "version": "unknown",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+    "installedAt": "2026-03-11T06:21:44.775Z",
+    "lastUpdated": "2026-04-08T05:03:50.871Z"
+  },
+  {
+    "id": "gopls-lsp@claude-plugins-official",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/gopls-lsp/1.0.0",
+    "installedAt": "2026-03-11T06:21:47.215Z",
+    "lastUpdated": "2026-03-11T06:21:47.215Z"
+  },
+  {
+    "id": "harness@harness-marketplace",
+    "version": "1.2.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/harness-marketplace/harness/1.2.0",
+    "installedAt": "2026-04-04T10:43:39.893Z",
+    "lastUpdated": "2026-04-08T09:00:24.312Z"
+  },
+  {
+    "id": "jdtls-lsp@claude-plugins-official",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/jdtls-lsp/1.0.0",
+    "installedAt": "2026-03-21T06:06:57.326Z",
+    "lastUpdated": "2026-03-21T06:06:57.326Z"
+  },
+  {
+    "id": "kotlin-lsp@claude-plugins-official",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/kotlin-lsp/1.0.0",
+    "installedAt": "2026-03-11T06:21:47.223Z",
+    "lastUpdated": "2026-03-11T06:21:47.223Z"
+  },
+  {
+    "id": "oh-my-claudecode@omc",
+    "version": "4.11.2",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/omc/oh-my-claudecode/4.11.2",
+    "installedAt": "2026-04-08T09:49:14.542Z",
+    "lastUpdated": "2026-04-08T09:49:14.542Z",
+    "mcpServers": {
+      "t": {
+        "command": "node",
+        "args": [
+          "${CLAUDE_PLUGIN_ROOT}/bridge/mcp-server.cjs"
+        ]
+      }
+    }
+  },
+  {
+    "id": "plugin-dev@claude-plugins-official",
+    "version": "unknown",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/plugin-dev/unknown",
+    "installedAt": "2026-03-11T06:21:46.123Z",
+    "lastUpdated": "2026-04-08T05:03:50.869Z"
+  },
+  {
+    "id": "pyright-lsp@claude-plugins-official",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/pyright-lsp/1.0.0",
+    "installedAt": "2026-03-11T06:21:46.102Z",
+    "lastUpdated": "2026-03-11T06:21:46.102Z"
+  },
+  {
+    "id": "ralph-loop@claude-plugins-official",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/ralph-loop/1.0.0",
+    "installedAt": "2026-03-11T06:21:46.095Z",
+    "lastUpdated": "2026-03-29T07:32:26.505Z"
+  },
+  {
+    "id": "ralph-skills@ralph-marketplace",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/ralph-marketplace/ralph-skills/1.0.0",
+    "installedAt": "2026-03-11T06:22:42.379Z",
+    "lastUpdated": "2026-03-11T06:22:42.379Z"
+  },
+  {
+    "id": "rust-analyzer-lsp@claude-plugins-official",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/rust-analyzer-lsp/1.0.0",
+    "installedAt": "2026-03-11T06:21:47.218Z",
+    "lastUpdated": "2026-03-11T06:21:47.218Z"
+  },
+  {
+    "id": "security-guidance@claude-plugins-official",
+    "version": "unknown",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/security-guidance/unknown",
+    "installedAt": "2026-04-07T02:24:28.984Z",
+    "lastUpdated": "2026-04-08T05:03:50.870Z"
+  },
+  {
+    "id": "skill-creator@claude-plugins-official",
+    "version": "unknown",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown",
+    "installedAt": "2026-03-09T08:18:47.390Z",
+    "lastUpdated": "2026-04-08T05:03:50.870Z"
+  },
+  {
+    "id": "slack@claude-plugins-official",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/slack/1.0.0",
+    "installedAt": "2026-03-11T06:21:47.211Z",
+    "lastUpdated": "2026-03-11T06:21:47.211Z",
+    "mcpServers": {
+      "slack": {
+        "type": "http",
+        "url": "https://mcp.slack.com/mcp",
+        "oauth": {
+          "clientId": "1601185624273.8899143856786",
+          "callbackPort": 3118
+        }
+      }
+    }
+  },
+  {
+    "id": "superpowers@claude-plugins-official",
+    "version": "5.0.7",
+    "scope": "user",
+    "enabled": false,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7",
+    "installedAt": "2026-03-11T06:21:46.080Z",
+    "lastUpdated": "2026-04-01T03:23:19.518Z"
+  },
+  {
+    "id": "swift-lsp@claude-plugins-official",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/swift-lsp/1.0.0",
+    "installedAt": "2026-03-11T06:21:47.220Z",
+    "lastUpdated": "2026-03-11T06:21:47.220Z"
+  },
+  {
+    "id": "telegram@claude-plugins-official",
+    "version": "0.0.6",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/telegram/0.0.6",
+    "installedAt": "2026-03-20T06:06:52.819Z",
+    "lastUpdated": "2026-04-18T23:59:03.520Z",
+    "mcpServers": {
+      "telegram": {
+        "command": "bun",
+        "args": [
+          "run",
+          "--cwd",
+          "${CLAUDE_PLUGIN_ROOT}",
+          "--shell=bun",
+          "--silent",
+          "start"
+        ]
+      }
+    }
+  },
+  {
+    "id": "toby-essentials@toby-plugins",
+    "version": "1.30.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/toby-plugins/toby-essentials/1.30.0",
+    "installedAt": "2026-03-11T06:23:29.347Z",
+    "lastUpdated": "2026-04-24T03:53:05.297Z"
+  },
+  {
+    "id": "typescript-lsp@claude-plugins-official",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/typescript-lsp/1.0.0",
+    "installedAt": "2026-03-29T23:41:10.437Z",
+    "lastUpdated": "2026-03-29T23:41:10.437Z"
+  }
+]

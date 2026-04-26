@@ -1,0 +1,6 @@
+Usage: claude plugin marketplace update [options] [name]
+
+Update marketplace(s) from their source - updates all if no name specified
+
+Options:
+  -h, --help  Display help for command

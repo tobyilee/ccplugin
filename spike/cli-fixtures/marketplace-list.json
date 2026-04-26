@@ -1,0 +1,38 @@
+[
+  {
+    "name": "claude-plugins-official",
+    "source": "git",
+    "url": "https://github.com/anthropics/claude-plugins-official.git",
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/claude-plugins-official"
+  },
+  {
+    "name": "harness-marketplace",
+    "source": "git",
+    "url": "https://github.com/revfactory/harness.git",
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/harness-marketplace"
+  },
+  {
+    "name": "omc",
+    "source": "git",
+    "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git",
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/omc"
+  },
+  {
+    "name": "openai-codex",
+    "source": "github",
+    "repo": "openai/codex-plugin-cc",
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/openai-codex"
+  },
+  {
+    "name": "ralph-marketplace",
+    "source": "git",
+    "url": "https://github.com/snarktank/ralph.git",
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/ralph-marketplace"
+  },
+  {
+    "name": "toby-plugins",
+    "source": "git",
+    "url": "https://github.com/tobyilee/toby-plugins.git",
+    "installLocation": "/Users/tobylee/.claude/plugins/marketplaces/toby-plugins"
+  }
+]

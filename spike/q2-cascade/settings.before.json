@@ -1,0 +1,97 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/tobylee/.claude/skills/gstack/bin/gstack-session-update"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs"
+  },
+  "enabledPlugins": {
+    "explanatory-output-style@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": false,
+    "feature-dev@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true,
+    "slack@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "kotlin-lsp@claude-plugins-official": true,
+    "firecrawl@claude-plugins-official": true,
+    "ralph-skills@ralph-marketplace": true,
+    "toby-essentials@toby-plugins": true,
+    "telegram@claude-plugins-official": true,
+    "discord@claude-plugins-official": true,
+    "jdtls-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "codex@openai-codex": true,
+    "harness@harness-marketplace": true,
+    "security-guidance@claude-plugins-official": true,
+    "oh-my-claudecode@omc": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-plugins-official": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/anthropics/claude-plugins-official.git"
+      }
+    },
+    "ralph-marketplace": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/snarktank/ralph.git"
+      },
+      "autoUpdate": true
+    },
+    "toby-plugins": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/tobyilee/toby-plugins.git"
+      },
+      "autoUpdate": true
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "harness-marketplace": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/revfactory/harness.git"
+      },
+      "autoUpdate": true
+    },
+    "omc": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git"
+      }
+    }
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": false,
+  "verbose": true
+}

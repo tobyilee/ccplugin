@@ -1,0 +1,8 @@
+Usage: claude plugin list [options]
+
+List installed plugins
+
+Options:
+  --available  Include available plugins from marketplaces (requires --json)
+  -h, --help   Display help for command
+  --json       Output as JSON

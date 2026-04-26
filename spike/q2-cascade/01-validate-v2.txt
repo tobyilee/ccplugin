@@ -1,0 +1,7 @@
+Validating marketplace manifest: /tmp/cc-pm-spike/test-market/.claude-plugin/marketplace.json
+
+⚠ Found 1 warning:
+
+  ❯ metadata.description: No marketplace description provided. Adding a description helps users understand what this marketplace offers
+
+✔ Validation passed with warnings

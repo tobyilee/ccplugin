@@ -1,0 +1,1 @@
+Installing plugin "spike-dummy@cc-pm-spike-test"...✔ Successfully installed plugin: spike-dummy@cc-pm-spike-test (scope: user)

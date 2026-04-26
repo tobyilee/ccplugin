@@ -1,0 +1,8 @@
+Validating marketplace manifest: /tmp/cc-pm-spike/test-market/.claude-plugin/marketplace.json
+
+✘ Found 2 errors:
+
+  ❯ plugins.0.source: Invalid input
+  ❯ root: Unrecognized keys: "$schema", "description"
+
+✘ Validation failed

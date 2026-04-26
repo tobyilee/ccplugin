@@ -1,0 +1,263 @@
+{
+  "version": 2,
+  "plugins": {
+    "explanatory-output-style@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/explanatory-output-style/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T08:18:47.378Z",
+        "lastUpdated": "2026-03-29T07:32:26.504Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "skill-creator@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown",
+        "version": "unknown",
+        "installedAt": "2026-03-09T08:18:47.390Z",
+        "lastUpdated": "2026-04-08T05:03:50.870Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "frontend-design@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+        "version": "unknown",
+        "installedAt": "2026-03-11T06:21:44.775Z",
+        "lastUpdated": "2026-04-08T05:03:50.871Z",
+        "gitCommitSha": "bd041495bd2a1f3e21317f37277b2f5aa152b759"
+      }
+    ],
+    "superpowers@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7",
+        "version": "5.0.7",
+        "installedAt": "2026-03-11T06:21:46.080Z",
+        "lastUpdated": "2026-04-01T03:23:19.518Z",
+        "gitCommitSha": "5ef73d25b71e69e63a74eae359fb26c7a6ac8fc0"
+      }
+    ],
+    "feature-dev@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+        "version": "unknown",
+        "installedAt": "2026-03-11T06:21:46.088Z",
+        "lastUpdated": "2026-04-08T05:03:50.870Z",
+        "gitCommitSha": "bd041495bd2a1f3e21317f37277b2f5aa152b759"
+      }
+    ],
+    "code-simplifier@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/code-simplifier/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-11T06:21:46.091Z",
+        "lastUpdated": "2026-03-11T06:21:46.091Z",
+        "gitCommitSha": "bd041495bd2a1f3e21317f37277b2f5aa152b759"
+      }
+    ],
+    "ralph-loop@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/ralph-loop/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-11T06:21:46.095Z",
+        "lastUpdated": "2026-03-29T07:32:26.505Z",
+        "gitCommitSha": "bd041495bd2a1f3e21317f37277b2f5aa152b759"
+      }
+    ],
+    "commit-commands@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/commit-commands/unknown",
+        "version": "unknown",
+        "installedAt": "2026-03-11T06:21:46.100Z",
+        "lastUpdated": "2026-04-08T05:03:50.869Z",
+        "gitCommitSha": "bd041495bd2a1f3e21317f37277b2f5aa152b759"
+      }
+    ],
+    "pyright-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/pyright-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-11T06:21:46.102Z",
+        "lastUpdated": "2026-03-11T06:21:46.102Z",
+        "gitCommitSha": "bd041495bd2a1f3e21317f37277b2f5aa152b759"
+      }
+    ],
+    "plugin-dev@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/plugin-dev/unknown",
+        "version": "unknown",
+        "installedAt": "2026-03-11T06:21:46.123Z",
+        "lastUpdated": "2026-04-08T05:03:50.869Z",
+        "gitCommitSha": "bd041495bd2a1f3e21317f37277b2f5aa152b759"
+      }
+    ],
+    "slack@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/slack/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-11T06:21:47.211Z",
+        "lastUpdated": "2026-03-11T06:21:47.211Z",
+        "gitCommitSha": "5a4ffe5ef353c1893eb0f1762a9071bebeeb7fde"
+      }
+    ],
+    "gopls-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/gopls-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-11T06:21:47.215Z",
+        "lastUpdated": "2026-03-11T06:21:47.215Z",
+        "gitCommitSha": "bd041495bd2a1f3e21317f37277b2f5aa152b759"
+      }
+    ],
+    "rust-analyzer-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/rust-analyzer-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-11T06:21:47.218Z",
+        "lastUpdated": "2026-03-11T06:21:47.218Z",
+        "gitCommitSha": "bd041495bd2a1f3e21317f37277b2f5aa152b759"
+      }
+    ],
+    "swift-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/swift-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-11T06:21:47.220Z",
+        "lastUpdated": "2026-03-11T06:21:47.220Z",
+        "gitCommitSha": "bd041495bd2a1f3e21317f37277b2f5aa152b759"
+      }
+    ],
+    "kotlin-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/kotlin-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-11T06:21:47.223Z",
+        "lastUpdated": "2026-03-11T06:21:47.223Z",
+        "gitCommitSha": "bd041495bd2a1f3e21317f37277b2f5aa152b759"
+      }
+    ],
+    "firecrawl@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/firecrawl/1.0.8",
+        "version": "1.0.8",
+        "installedAt": "2026-03-11T06:21:48.257Z",
+        "lastUpdated": "2026-04-09T00:35:55.950Z",
+        "gitCommitSha": "684b975c8cc6bd0fcfa96f787900bf87fffeef57"
+      }
+    ],
+    "ralph-skills@ralph-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/ralph-marketplace/ralph-skills/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-11T06:22:42.379Z",
+        "lastUpdated": "2026-03-11T06:22:42.379Z",
+        "gitCommitSha": "6c53cb0b831ebe8739c6a003e22af14902d8b0b5"
+      }
+    ],
+    "toby-essentials@toby-plugins": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/toby-plugins/toby-essentials/1.30.0",
+        "version": "1.30.0",
+        "installedAt": "2026-03-11T06:23:29.347Z",
+        "lastUpdated": "2026-04-24T03:53:05.297Z",
+        "gitCommitSha": "86e75c0d62ea6f399fb8ccdf420b2df64f3dc3df"
+      }
+    ],
+    "telegram@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/telegram/0.0.6",
+        "version": "0.0.6",
+        "installedAt": "2026-03-20T06:06:52.819Z",
+        "lastUpdated": "2026-04-18T23:59:03.520Z",
+        "gitCommitSha": "b664e152af5742dd11b6a6e5d7a65848a8c5a261"
+      }
+    ],
+    "discord@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/discord/0.0.4",
+        "version": "0.0.4",
+        "installedAt": "2026-03-20T11:16:34.439Z",
+        "lastUpdated": "2026-03-24T06:38:41.191Z",
+        "gitCommitSha": "b664e152af5742dd11b6a6e5d7a65848a8c5a261"
+      }
+    ],
+    "jdtls-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/jdtls-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-21T06:06:57.326Z",
+        "lastUpdated": "2026-03-21T06:06:57.326Z",
+        "gitCommitSha": "61c0597779bd2d670dcd4fbbf37c66aa19eb2ce6"
+      }
+    ],
+    "typescript-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/typescript-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-29T23:41:10.437Z",
+        "lastUpdated": "2026-03-29T23:41:10.437Z"
+      }
+    ],
+    "codex@openai-codex": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/openai-codex/codex/1.0.2",
+        "version": "1.0.2",
+        "installedAt": "2026-04-01T04:08:45.916Z",
+        "lastUpdated": "2026-04-01T04:08:45.916Z",
+        "gitCommitSha": "8e403f9d4b496b0b0aff50fa3673f889f6a22cb1"
+      }
+    ],
+    "harness@harness-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/harness-marketplace/harness/1.2.0",
+        "version": "1.2.0",
+        "installedAt": "2026-04-04T10:43:39.893Z",
+        "lastUpdated": "2026-04-08T09:00:24.312Z",
+        "gitCommitSha": "277bc8c522b5b0db9bbe3f0465cf80677471ad4e"
+      }
+    ],
+    "security-guidance@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/claude-plugins-official/security-guidance/unknown",
+        "version": "unknown",
+        "installedAt": "2026-04-07T02:24:28.984Z",
+        "lastUpdated": "2026-04-08T05:03:50.870Z"
+      }
+    ],
+    "oh-my-claudecode@omc": [
+      {
+        "scope": "user",
+        "installPath": "/Users/tobylee/.claude/plugins/cache/omc/oh-my-claudecode/4.11.2",
+        "version": "4.11.2",
+        "installedAt": "2026-04-08T09:49:14.542Z",
+        "lastUpdated": "2026-04-08T09:49:14.542Z",
+        "gitCommitSha": "6b3cd060a954b122a4cd07eae71698aa415432f3"
+      }
+    ]
+  }
+}

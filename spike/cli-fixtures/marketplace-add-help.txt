@@ -1,0 +1,11 @@
+Usage: claude plugin marketplace add [options] <source>
+
+Add a marketplace from a URL, path, or GitHub repo
+
+Options:
+  -h, --help           Display help for command
+  --scope <scope>      Where to declare the marketplace: user (default),
+                       project, or local
+  --sparse <paths...>  Limit checkout to specific directories via git
+                       sparse-checkout (for monorepos). Example: --sparse
+                       .claude-plugin plugins

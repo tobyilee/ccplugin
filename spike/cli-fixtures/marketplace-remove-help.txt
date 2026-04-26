@@ -1,0 +1,6 @@
+Usage: claude plugin marketplace remove|rm [options] <name>
+
+Remove a configured marketplace
+
+Options:
+  -h, --help  Display help for command
