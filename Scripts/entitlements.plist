@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--
+      PRD §10.5 결정: Sandbox OFF + Developer ID 배포.
+      이유: ~/.claude 에 직접 read/write 필요 + claude CLI 자식 프로세스 spawn 필요.
+      App Store 비대상.
+
+      Hardened Runtime 은 codesign --options runtime 로 활성화 (entitlements 와 별개).
+    -->
+
+    <!-- 자식 프로세스 spawn (claude CLI 호출) -->
+    <key>com.apple.security.cs.allow-unsigned-executable-memory</key>
+    <false/>
+
+    <!-- JIT 비활성 — Swift native 앱에 불필요 -->
+    <key>com.apple.security.cs.allow-jit</key>
+    <false/>
+
+    <!-- DYLD env override 차단 — 안전 -->
+    <key>com.apple.security.cs.disable-library-validation</key>
+    <false/>
+</dict>
+</plist>

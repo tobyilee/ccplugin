@@ -80,6 +80,165 @@ struct MarketplaceReaderTests {
     }
 }
 
+@Suite("SettingsReader — 본인 환경")
+struct SettingsReaderTests {
+
+    @Test("실제 settings.json 의 enabledPlugins / extraKnownMarketplaces 로딩")
+    func loadsRealSettings() async throws {
+        let reader = SettingsReader()
+        let settings = try await reader.load()
+        let enabled = settings.enabledPlugins ?? [:]
+        #expect(!enabled.isEmpty, "enabledPlugins 비어있음 — 본인 환경 가정")
+        let markets = settings.extraKnownMarketplaces ?? [:]
+        #expect(markets["claude-plugins-official"] != nil)
+    }
+
+    @Test("존재하지 않는 settings.json 은 fileNotFound throw")
+    func nonExistentFile_throws() async {
+        let reader = SettingsReader(fileURL: URL(fileURLWithPath: "/no/such/settings.json"))
+        await #expect(throws: SettingsReader.ReaderError.self) {
+            _ = try await reader.load()
+        }
+    }
+
+    @Test("빈 객체 `{}` 도 정상 디코드 — 모든 키 nil")
+    func emptyObject_decodes() async throws {
+        let tmp = URL(fileURLWithPath: NSTemporaryDirectory())
+            .appending(path: "settings-empty-\(UUID().uuidString).json")
+        try Data("{}".utf8).write(to: tmp)
+        defer { try? FileManager.default.removeItem(at: tmp) }
+        let reader = SettingsReader(fileURL: tmp)
+        let settings = try await reader.load()
+        #expect(settings.enabledPlugins == nil)
+        #expect(settings.extraKnownMarketplaces == nil)
+    }
+
+    @Test("미지원 키는 무시 — passthrough 의도 확인")
+    func unknownKeys_ignored() async throws {
+        let tmp = URL(fileURLWithPath: NSTemporaryDirectory())
+            .appending(path: "settings-extra-\(UUID().uuidString).json")
+        let json = """
+        {
+          "enabledPlugins": {"foo@bar": true},
+          "statusLine": {"type": "command", "command": "echo hi"},
+          "permissions": {"allow": ["Bash"]}
+        }
+        """
+        try Data(json.utf8).write(to: tmp)
+        defer { try? FileManager.default.removeItem(at: tmp) }
+        let reader = SettingsReader(fileURL: tmp)
+        let settings = try await reader.load()
+        #expect(settings.enabledPlugins?["foo@bar"] == true)
+        // statusLine / permissions 는 type 에 없음 → 무시되며 throw 없음.
+    }
+}
+
+@Suite("PluginManifestReader")
+struct PluginManifestReaderTests {
+
+    @Test("실제 cache 의 plugin.json 디코드 — 임의 1개 선택")
+    func decodesRealManifest() async throws {
+        let manifestURL = try findFirstManifest(under: ClaudePaths.cacheDir)
+        let installPath = manifestURL
+            .deletingLastPathComponent()  // .claude-plugin/
+            .deletingLastPathComponent()  // <version>/
+        let reader = PluginManifestReader()
+        let manifest = try await reader.loadManifest(at: installPath)
+        #expect(!manifest.name.isEmpty)
+    }
+
+    @Test("plugin.json 누락 → manifestNotFound throw")
+    func missingManifest_throws() async {
+        let reader = PluginManifestReader()
+        let dummy = URL(fileURLWithPath: "/tmp/cc-pm-no-such-\(UUID().uuidString)")
+        await #expect(throws: PluginManifestReader.ReaderError.self) {
+            _ = try await reader.loadManifest(at: dummy)
+        }
+    }
+
+    @Test("PluginAuthor — string / object 두 형식 모두 디코드")
+    func authorBothShapes() throws {
+        let dec = JSONCoding.decoder()
+        let stringForm = try dec.decode(PluginAuthor.self, from: Data("\"Toby Lee\"".utf8))
+        #expect(stringForm.name == "Toby Lee")
+        #expect(stringForm.email == nil)
+
+        let objectForm = try dec.decode(
+            PluginAuthor.self,
+            from: Data(#"{"name":"Toby","email":"t@example.com"}"#.utf8)
+        )
+        #expect(objectForm.name == "Toby")
+        #expect(objectForm.email == "t@example.com")
+    }
+
+    @Test("countComponents — 디렉토리 + JSON 파일 카운트")
+    func countsComponents() async throws {
+        let root = URL(fileURLWithPath: NSTemporaryDirectory())
+            .appending(path: "cc-pm-mreader-\(UUID().uuidString)", directoryHint: .isDirectory)
+        defer { try? FileManager.default.removeItem(at: root) }
+        let fm = FileManager.default
+
+        try fm.createDirectory(at: root.appending(path: "commands"), withIntermediateDirectories: true)
+        try Data().write(to: root.appending(path: "commands/a.md"))
+        try Data().write(to: root.appending(path: "commands/b.md"))
+        try Data().write(to: root.appending(path: "commands/notes.txt"))  // 무시: .md 아님
+
+        try fm.createDirectory(at: root.appending(path: "agents"), withIntermediateDirectories: true)
+        try Data().write(to: root.appending(path: "agents/foo.md"))
+
+        try fm.createDirectory(at: root.appending(path: "skills/one"), withIntermediateDirectories: true)
+        try Data().write(to: root.appending(path: "skills/one/SKILL.md"))
+        try fm.createDirectory(at: root.appending(path: "skills/two"), withIntermediateDirectories: true)
+        try Data().write(to: root.appending(path: "skills/two/SKILL.md"))
+        try fm.createDirectory(at: root.appending(path: "skills/empty"), withIntermediateDirectories: true)
+        // skills/empty 는 SKILL.md 없음 → 무시
+
+        try fm.createDirectory(at: root.appending(path: "hooks"), withIntermediateDirectories: true)
+        try Data(#"{"hooks":{"PreToolUse":[{"matcher":"a"},{"matcher":"b"}],"Stop":[{"matcher":"c"}]}}"#.utf8)
+            .write(to: root.appending(path: "hooks/hooks.json"))
+
+        try Data(#"{"mcpServers":{"x":{"command":"y"}}}"#.utf8)
+            .write(to: root.appending(path: ".mcp.json"))
+
+        let reader = PluginManifestReader()
+        let counts = await reader.countComponents(at: root)
+        #expect(counts.commands == 2)
+        #expect(counts.agents == 1)
+        #expect(counts.skills == 2)
+        #expect(counts.hooks == 3)
+        #expect(counts.mcpServers == 1)
+        #expect(counts.lspServers == 0)
+    }
+
+    @Test("countComponents — 모든 디렉토리 누락 시 zero")
+    func countsZeroOnMissing() async throws {
+        let dummy = URL(fileURLWithPath: "/tmp/cc-pm-missing-\(UUID().uuidString)")
+        let reader = PluginManifestReader()
+        let counts = await reader.countComponents(at: dummy)
+        #expect(counts == .zero)
+    }
+
+    private func findFirstManifest(under dir: URL) throws -> URL {
+        let fm = FileManager.default
+        guard let enumerator = fm.enumerator(at: dir, includingPropertiesForKeys: nil) else {
+            throw NSError(
+                domain: "Test", code: -1,
+                userInfo: [NSLocalizedDescriptionKey: "cache 디렉토리 enumerate 실패: \(dir.path)"]
+            )
+        }
+        for case let url as URL in enumerator {
+            if url.lastPathComponent == "plugin.json",
+               url.deletingLastPathComponent().lastPathComponent == ".claude-plugin" {
+                return url
+            }
+        }
+        throw NSError(
+            domain: "Test", code: -2,
+            userInfo: [NSLocalizedDescriptionKey: "plugin.json 미발견 in \(dir.path)"]
+        )
+    }
+}
+
 @Suite("FSEventsWatcher — 실제 파일시스템 변경 감지")
 struct FSEventsWatcherTests {
 

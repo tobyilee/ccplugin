@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build (compilation smoke test)
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: |
+          swift --version
+          xcodebuild -version
+
+      - name: Build PluginCore
+        working-directory: Packages/PluginCore
+        run: swift build
+
+      - name: Build App
+        working-directory: Packages/App
+        run: swift build
+
+  # PluginCore 의 isolated tests 만 실행 (real env tests 는 ~/.claude 의존이라 CI 환경에서 skip).
+  # CLAUDE_CONFIG_DIR 을 빈 fixture 로 지정하면 fileNotFound 류 가드만 통과 → 가치 낮음.
+  # 본격적 test는 로컬에서.

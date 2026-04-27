@@ -1,0 +1,355 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1777204052531,
+  "projectRoot": "/Users/tobylee/workspace/ai/ccplugin",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "Packages": {
+      "path": "Packages",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1777204052275,
+      "keyFiles": []
+    },
+    "spike": {
+      "path": "spike",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1777204052275,
+      "keyFiles": [
+        "REPORT.md"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "Packages/App/Sources/App/ViewModels/InventoryViewModel.swift",
+      "accessCount": 24,
+      "lastAccessed": 1777255608245,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/MarketplacesTab.swift",
+      "accessCount": 11,
+      "lastAccessed": 1777255533286,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/MainWindow.swift",
+      "accessCount": 8,
+      "lastAccessed": 1777237632989,
+      "type": "file"
+    },
+    {
+      "path": "PRD.md",
+      "accessCount": 6,
+      "lastAccessed": 1777204336166,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/InstalledTab.swift",
+      "accessCount": 5,
+      "lastAccessed": 1777255469763,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/BrowseTab.swift",
+      "accessCount": 5,
+      "lastAccessed": 1777255487786,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Writers/SettingsWriter.swift",
+      "accessCount": 3,
+      "lastAccessed": 1777206024830,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Readers/MarketplaceReader.swift",
+      "accessCount": 3,
+      "lastAccessed": 1777254646314,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Tests/PluginCoreTests/ReaderTests.swift",
+      "accessCount": 2,
+      "lastAccessed": 1777204590453,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Bridge/MarketplaceOperations.swift",
+      "accessCount": 2,
+      "lastAccessed": 1777205610448,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Schemas/ManagerSettingsSubset.swift",
+      "accessCount": 2,
+      "lastAccessed": 1777205983829,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Tests/PluginCoreTests/M4Tests.swift",
+      "accessCount": 2,
+      "lastAccessed": 1777206301091,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/DiagnosticsTab.swift",
+      "accessCount": 2,
+      "lastAccessed": 1777206348219,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Schemas/KnownMarketplaces.swift",
+      "accessCount": 2,
+      "lastAccessed": 1777254573311,
+      "type": "file"
+    },
+    {
+      "path": "spike/REPORT.md",
+      "accessCount": 1,
+      "lastAccessed": 1777204082753,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Package.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204083527,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Schemas/InstalledPluginsV2.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204097721,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Bridge/ClaudeCLI.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204099129,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Watching/FSEventsWatcher.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204099934,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Bridge/ProcessRunner.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204100598,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Readers/InstalledReader.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204311499,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Schemas/JSONCoding.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204312652,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Paths/ClaudePaths.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204313436,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Tests/PluginCoreTests/TestHelpers.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204314467,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Schemas/MarketplaceSource.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204381499,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Schemas/PluginManifest.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204519400,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Readers/SettingsReader.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204526766,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Readers/PluginManifestReader.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204548983,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Package.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204943205,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/AppMain.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204951506,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/MenubarPopover.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777204962165,
+      "type": "file"
+    },
+    {
+      "path": "Scripts/sparkle-keygen.sh",
+      "accessCount": 1,
+      "lastAccessed": 1777205033514,
+      "type": "file"
+    },
+    {
+      "path": "Scripts/sign.sh",
+      "accessCount": 1,
+      "lastAccessed": 1777205046879,
+      "type": "file"
+    },
+    {
+      "path": "Scripts/notarize.sh",
+      "accessCount": 1,
+      "lastAccessed": 1777205061033,
+      "type": "file"
+    },
+    {
+      "path": "Scripts/release.sh",
+      "accessCount": 1,
+      "lastAccessed": 1777205076903,
+      "type": "file"
+    },
+    {
+      "path": "Scripts/entitlements.plist",
+      "accessCount": 1,
+      "lastAccessed": 1777205082948,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Locking/FileLock.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777205381631,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Locking/BackupService.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777205394337,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Tests/PluginCoreTests/LockingTests.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777205463407,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Bridge/PluginOperations.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777205739954,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/InstallDialog.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777205750893,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/ReloadHintBanner.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777205768516,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Schemas/HooksConfig.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777205973044,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Readers/UserAssetReader.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777205994933,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Diagnostics/DiagnosticsRunner.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777206012664,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/UserAssetsTab.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777206074674,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/HooksTab.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777206091965,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/AddHookSheet.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777206103630,
+      "type": "file"
+    },
+    {
+      "path": "Packages/PluginCore/Sources/PluginCore/Diagnostics/CacheCleanup.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777206286197,
+      "type": "file"
+    },
+    {
+      "path": "Packages/App/Sources/App/UI/AddMarketplaceSheet.swift",
+      "accessCount": 1,
+      "lastAccessed": 1777206328726,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
