@@ -28,13 +28,29 @@ public actor MarketplaceReader {
         public let email: String?
     }
 
+    /// `marketplace.json` 의 `metadata` 객체 — 일부 마켓 (e.g. openai-codex) 에서만 존재.
+    /// version 은 매니저 UI 에 표시되어 사용자가 최신 카탈로그인지 가늠하도록 함.
+    public struct MarketplaceMetadata: Codable, Sendable, Equatable {
+        public let description: String?
+        public let version: String?
+    }
+
     /// `marketplace.json` 자체 (최상위).
     /// `$schema` / root `description` 같은 추가 키는 spike Q11 에서 발견된 micro-drift —
     /// `passthrough` 패턴으로 보존 (Codable 상으론 무시).
+    /// description 은 root 와 `metadata.description` 두 위치 모두 합법 → `effectiveDescription` 사용.
     public struct MarketplaceCatalog: Codable, Sendable {
         public let name: String
+        public let description: String?
         public let owner: MarketplaceOwner?
+        public let metadata: MarketplaceMetadata?
         public let plugins: [PluginCatalogEntry]
+
+        /// `metadata.version` — 별칭. nil 이면 마켓이 버전을 declared 하지 않은 것.
+        public var effectiveVersion: String? { metadata?.version }
+
+        /// root `description` 우선, 없으면 `metadata.description` fallback.
+        public var effectiveDescription: String? { description ?? metadata?.description }
     }
 
     private let knownFileURL: URL

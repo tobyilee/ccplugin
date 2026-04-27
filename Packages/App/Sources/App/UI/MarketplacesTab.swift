@@ -28,6 +28,15 @@ struct MarketplacesTab: View {
                     VStack(alignment: .leading, spacing: 2) {
                         HStack(spacing: 6) {
                             Text(row.name).font(.body.bold())
+                            if let v = row.version {
+                                Text("v\(v)")
+                                    .font(.caption2.monospaced())
+                                    .padding(.horizontal, 5)
+                                    .padding(.vertical, 1)
+                                    .background(Color.secondary.opacity(0.15))
+                                    .clipShape(Capsule())
+                                    .help("Catalog version (marketplace.json `metadata.version`)")
+                            }
                             if !row.declaredInUserSettings {
                                 Image(systemName: "lock.fill")
                                     .font(.caption2)
@@ -40,12 +49,22 @@ struct MarketplacesTab: View {
                             .foregroundStyle(.secondary)
                             .lineLimit(1)
                             .truncationMode(.middle)
+                        Text("Updated \(row.lastUpdated.formatted(.relative(presentation: .named)))")
+                            .font(.caption2)
+                            .foregroundStyle(.tertiary)
+                            .help(row.lastUpdated.formatted(date: .abbreviated, time: .shortened))
                     }
                     .padding(.vertical, 2)
                     .contextMenu {
                         rowContextMenu(for: row)
                     }
                 }
+                TableColumn("Version") { row in
+                    Text(row.version ?? "—")
+                        .font(.caption.monospaced())
+                        .foregroundStyle(row.version == nil ? .secondary : .primary)
+                }
+                .width(min: 60, ideal: 80, max: 100)
                 TableColumn("Plugins") { row in
                     Text("\(row.pluginCount)")
                         .font(.caption.monospaced())

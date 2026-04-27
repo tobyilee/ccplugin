@@ -160,7 +160,10 @@ final class InventoryViewModel: ObservableObject {
                 autoUpdate: effectiveAutoUpdate,
                 pluginCount: catalog?.plugins.count ?? 0,
                 declaredInUserSettings: settings.extraKnownMarketplaces?[name] != nil,
-                installLocation: entry.installLocation
+                installLocation: entry.installLocation,
+                version: catalog?.effectiveVersion,
+                description: catalog?.effectiveDescription,
+                lastUpdated: entry.lastUpdated
             ))
         }
         self.marketplaces = mrows.sorted { $0.name < $1.name }
@@ -271,7 +274,10 @@ final class InventoryViewModel: ObservableObject {
             autoUpdate: autoUpdate,
             pluginCount: old.pluginCount,
             declaredInUserSettings: old.declaredInUserSettings,
-            installLocation: old.installLocation
+            installLocation: old.installLocation,
+            version: old.version,
+            description: old.description,
+            lastUpdated: old.lastUpdated
         )
     }
 
@@ -429,6 +435,12 @@ struct MarketplaceRow: Identifiable, Equatable {
     let pluginCount: Int
     let declaredInUserSettings: Bool
     let installLocation: String
+    /// `marketplace.json` 의 `metadata.version` — declared 안 되어 있으면 nil.
+    let version: String?
+    /// `marketplace.json` root `description` 또는 `metadata.description`.
+    let description: String?
+    /// `known_marketplaces.json` 의 lastUpdated — refresh 시점의 표시.
+    let lastUpdated: Date
 }
 
 extension ComponentCounts {
