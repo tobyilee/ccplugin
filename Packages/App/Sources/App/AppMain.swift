@@ -1,6 +1,19 @@
 import SwiftUI
 import AppKit
 
+/// 앱 메타 — 단일 source-of-truth.
+/// `swift run` 빌드는 Info.plist 가 없어 `CFBundleShortVersionString` 이 nil →
+/// 상수 fallback 사용. release 번들은 sign.sh 가 Info.plist 를 주입하면 그쪽 우선.
+enum AppInfo {
+    static let version: String = {
+        if let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+           !v.isEmpty {
+            return v
+        }
+        return "0.1.0-dev"
+    }()
+}
+
 /// Claude Code Plugin Manager — 메뉴바 상주 SwiftUI 앱.
 ///
 /// PRD §6.4: 메뉴바 popover (status) + 풀 매니저 윈도우 (Installed/Marketplaces 탭).

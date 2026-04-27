@@ -136,6 +136,7 @@ struct MainWindow: View {
             }
         }
         .navigationTitle("Plugin Manager")
+        .navigationSubtitle("v\(AppInfo.version)")
         .task {
             if inventory.items.isEmpty && inventory.lastError == nil {
                 await inventory.reload()
