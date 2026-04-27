@@ -30,6 +30,31 @@ cd Packages/App && swift run CCPluginManager
 
 요구사항: macOS 13+, Swift 6.0 toolchain, `claude` CLI 2.1+.
 
+## 로컬 설치 (/Applications + 로그인 자동 실행)
+
+배포 dmg 가 아니라 본인 머신에 release 빌드를 빠르게 설치하는 dev 경로.
+Apple Developer 인증서 불필요 (ad-hoc codesign).
+
+```bash
+# 빌드 → /Applications/CCPluginManager.app 설치 → 로그인 항목 등록
+Scripts/install-local.sh
+
+# 로그인 항목 등록 없이 설치만
+Scripts/install-local.sh --no-login
+
+# 제거 (로그인 항목 + /Applications 둘 다)
+Scripts/install-local.sh --uninstall
+```
+
+스크립트가 하는 일:
+1. `swift build -c release` (Packages/App)
+2. `.app` 번들 조립 — `Info.plist` 에 `LSUIElement=YES` (Dock 미노출, 메뉴바만)
+3. `codesign --sign -` ad-hoc 서명 (배포용 X)
+4. `xattr -dr com.apple.quarantine` — 첫 실행 시 Gatekeeper "확인되지 않은 개발자" 다이얼로그 회피
+5. `osascript` 로 System Events 의 login item 추가 (`hidden:true`)
+
+처음 실행 시 macOS 가 ​File System / Apple Events 권한을 한 번 묻습니다 — 허용하면 다음 부팅부터 메뉴바에 자동 등장.
+
 ## 디렉토리 구조
 
 ```
