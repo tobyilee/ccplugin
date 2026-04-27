@@ -4,6 +4,8 @@
 
 macOS 메뉴바 native 앱. `~/.claude/` 의 플러그인·마켓·스킬·훅을 한 화면에서 관리.
 
+![Claude Code Plugin Manager — 메인 윈도우](docs/screenshots/main-window.png)
+
 > 상세 사양은 [PRD.md](PRD.md) 참조 (v2.2, ~2,000줄).
 
 ## 주요 기능

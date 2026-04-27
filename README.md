@@ -4,6 +4,8 @@
 
 A native macOS menu bar app for managing the plugins, marketplaces, skills, and hooks under `~/.claude/` from a single window.
 
+![Claude Code Plugin Manager — main window](docs/screenshots/main-window.png)
+
 > Full specification: [PRD.md](PRD.md) (v2.2, ~2,000 lines).
 
 ## Highlights
