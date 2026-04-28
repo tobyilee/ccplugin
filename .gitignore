@@ -11,8 +11,11 @@ DerivedData/
 *.xcodeproj/xcuserdata/
 *.xcworkspace/xcuserdata/
 
-# Claude Code (per-developer overrides)
+# Claude Code (per-developer overrides + harness runtime locks)
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
 
 # OMC runtime state (regenerated each session, at any depth)
 **/.omc/state/
+.omc/sessions/
+.omc/project-memory.json
