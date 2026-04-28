@@ -51,7 +51,9 @@ public struct HookCommand: Decodable, Sendable, Equatable {
 }
 
 public struct HookEntry: Decodable, Sendable, Equatable {
-    public let matcher: HookMatcher
+    /// Claude Code 의 `SessionStart`, `Stop`, `UserPromptSubmit` 등은 matcher 가 없는 게 정상.
+    /// `PreToolUse`/`PostToolUse` 만 사실상 필수 — 매니저는 양쪽 모두 허용.
+    public let matcher: HookMatcher?
     public let hooks: [HookCommand]
 }
 

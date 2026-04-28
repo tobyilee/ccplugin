@@ -81,7 +81,7 @@ struct HooksTab: View {
     private func hookRow(event: String, index: Int, entry: HookEntry) -> some View {
         HStack(alignment: .top, spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("matcher: \(entry.matcher.displayText)")
+                Text("matcher: \(entry.matcher?.displayText ?? "—")")
                     .font(.caption.monospaced())
                     .foregroundStyle(.secondary)
                 ForEach(Array(entry.hooks.enumerated()), id: \.offset) { _, cmd in
@@ -106,7 +106,7 @@ struct HooksTab: View {
                     id: "\(event)-\(index)",
                     event: event,
                     index: index,
-                    summary: "\(event)[\(index)] · matcher: \(entry.matcher.displayText)"
+                    summary: "\(event)[\(index)] · matcher: \(entry.matcher?.displayText ?? "—")"
                 )
             } label: {
                 Image(systemName: "trash").foregroundStyle(.red)

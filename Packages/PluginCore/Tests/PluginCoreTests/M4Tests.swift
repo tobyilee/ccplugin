@@ -76,6 +76,35 @@ struct ManagerSettingsHooksTests {
         )
         #expect(s.hooks == nil)
     }
+
+    /// 회귀: matcher 없는 hooks entry 가 전체 디코딩을 죽이면 안 됨.
+    /// SessionStart/Stop/UserPromptSubmit 같은 이벤트는 matcher 가 의미 없어 보통 생략됨.
+    /// 이 케이스에서 디코딩이 실패하면 enabledPlugins 가 빈값으로 떨어져
+    /// Installed 탭이 모두 disabled 로 나오고 토글이 작동하지 않음.
+    @Test("matcher 없는 hooks entry 도 디코드 — enabledPlugins 보존")
+    func matcherlessHookDoesNotBreakSettings() throws {
+        let json = #"""
+        {
+          "enabledPlugins": {"plugin-a@market": true, "plugin-b@market": false},
+          "hooks": {
+            "SessionStart": [
+              {
+                "hooks": [{"type": "command", "command": "/bin/true"}]
+              }
+            ]
+          }
+        }
+        """#
+        let s = try JSONCoding.decoder().decode(
+            ManagerSettingsSubset.self,
+            from: Data(json.utf8)
+        )
+        #expect(s.enabledPlugins?["plugin-a@market"] == true)
+        #expect(s.enabledPlugins?["plugin-b@market"] == false)
+        let entry = s.hooks?["SessionStart"]?.first
+        #expect(entry?.matcher == nil)
+        #expect(entry?.hooks.first?.command == "/bin/true")
+    }
 }
 
 @Suite("SettingsWriter — hooks add/remove")
