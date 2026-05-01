@@ -13,6 +13,7 @@ struct MainWindow: View {
         case browse
         case userAssets
         case hooks
+        case mcps
         case diagnostics
 
         var id: String { rawValue }
@@ -23,6 +24,7 @@ struct MainWindow: View {
             case .browse: return "Browse"
             case .userAssets: return "User Assets"
             case .hooks: return "Hooks"
+            case .mcps: return "MCPs"
             case .diagnostics: return "Diagnostics"
             }
         }
@@ -33,6 +35,7 @@ struct MainWindow: View {
             case .browse: return "magnifyingglass"
             case .userAssets: return "doc.text"
             case .hooks: return "bell.badge"
+            case .mcps: return "puzzlepiece.extension"
             case .diagnostics: return "stethoscope"
             }
         }
@@ -72,6 +75,12 @@ struct MainWindow: View {
                             systemImage: SidebarItem.hooks.systemImage
                         )
                     }
+                    NavigationLink(value: SidebarItem.mcps) {
+                        Label(
+                            "MCPs (\(inventory.mcps.count))",
+                            systemImage: SidebarItem.mcps.systemImage
+                        )
+                    }
                     NavigationLink(value: SidebarItem.diagnostics) {
                         Label(
                             "Diagnostics" + (inventory.diagnostics.isEmpty ? "" : " (\(inventory.diagnostics.count))"),
@@ -98,6 +107,8 @@ struct MainWindow: View {
                         UserAssetsTab()
                     case .hooks:
                         HooksTab()
+                    case .mcps:
+                        MCPsTab()
                     case .diagnostics:
                         DiagnosticsTab()
                     case nil:

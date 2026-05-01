@@ -17,7 +17,7 @@ APP_PKG_DIR="${ROOT}/Packages/App"
 APP_NAME="CCPluginManager"
 DISPLAY_NAME="Claude Code Plugin Manager"
 BUNDLE_ID="com.tobyilee.ccpluginmanager"
-APP_VERSION="0.1.0"   # AppInfo.version (AppMain.swift) 와 sync — 둘 다 같이 bump.
+APP_VERSION="0.2.0"   # AppInfo.version (AppMain.swift) + CHANGELOG.md + README "Current version" 와 sync.
 INSTALL_DIR="/Applications"
 INSTALLED_APP="${INSTALL_DIR}/${APP_NAME}.app"
 

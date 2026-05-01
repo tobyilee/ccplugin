@@ -19,6 +19,7 @@ final class InventoryViewModel: ObservableObject {
     @Published private(set) var marketplaces: [MarketplaceRow] = []
     @Published private(set) var availablePlugins: [BrowsePluginRow] = []
     @Published private(set) var hooks: HooksByEvent? = nil
+    @Published private(set) var mcps: [MCP] = []
     @Published private(set) var userAssets: [UserAssetReader.Asset] = []
     @Published private(set) var diagnostics: [DiagnosticsRunner.Diagnostic] = []
     @Published private(set) var lastError: String? = nil
@@ -33,10 +34,13 @@ final class InventoryViewModel: ObservableObject {
     private let settingsReader: SettingsReader
     private let marketplaceReader: MarketplaceReader
     private let manifestReader: PluginManifestReader
+    private let mcpReader: MCPReader
     private let userAssetReader: UserAssetReader
     private let settingsWriter: SettingsWriter
+    private let claudeJSONWriter: ClaudeJSONWriter
     private let marketOps: MarketplaceOperations
     private let pluginOps: PluginOperations
+    private let mcpOps: MCPOperations
     private let diagnosticsRunner: DiagnosticsRunner
     private let cacheCleanup: CacheCleanup
 
@@ -48,9 +52,12 @@ final class InventoryViewModel: ObservableObject {
         settingsReader: SettingsReader = SettingsReader(),
         marketplaceReader: MarketplaceReader = MarketplaceReader(),
         manifestReader: PluginManifestReader = PluginManifestReader(),
+        mcpReader: MCPReader = MCPReader(),
         settingsWriter: SettingsWriter = SettingsWriter(),
+        claudeJSONWriter: ClaudeJSONWriter = ClaudeJSONWriter(),
         marketOps: MarketplaceOperations = MarketplaceOperations(),
         pluginOps: PluginOperations = PluginOperations(),
+        mcpOps: MCPOperations = MCPOperations(),
         userAssetReader: UserAssetReader = UserAssetReader(),
         diagnosticsRunner: DiagnosticsRunner = DiagnosticsRunner(),
         cacheCleanup: CacheCleanup = CacheCleanup()
@@ -59,9 +66,12 @@ final class InventoryViewModel: ObservableObject {
         self.settingsReader = settingsReader
         self.marketplaceReader = marketplaceReader
         self.manifestReader = manifestReader
+        self.mcpReader = mcpReader
         self.settingsWriter = settingsWriter
+        self.claudeJSONWriter = claudeJSONWriter
         self.marketOps = marketOps
         self.pluginOps = pluginOps
+        self.mcpOps = mcpOps
         self.userAssetReader = userAssetReader
         self.diagnosticsRunner = diagnosticsRunner
         self.cacheCleanup = cacheCleanup
@@ -76,7 +86,12 @@ final class InventoryViewModel: ObservableObject {
     /// `~/.claude` 트리 변경 감지 → debounced reload.
     /// PRD §M2: FSEventsWatcher → 변경 자동 감지.
     private func startWatching() {
-        let paths: [URL] = [ClaudePaths.pluginsDir, ClaudePaths.configDir]
+        // ~/.claude.json 은 ~/.claude/ 와 sibling — 별도 path 로 추가해야 외부 `claude mcp add` 등을 감지.
+        let paths: [URL] = [
+            ClaudePaths.pluginsDir,
+            ClaudePaths.configDir,
+            ClaudePaths.userClaudeJSONFile,
+        ]
         let w = FSEventsWatcher(paths: paths, latency: 0.5)
         w.start { [weak self] _ in
             Task { @MainActor in
@@ -121,6 +136,7 @@ final class InventoryViewModel: ObservableObject {
 
         // Inventory rows.
         var rows: [PluginInventoryRow] = []
+        var pluginInstallPaths: [(id: String, installPath: URL)] = []
         for (id, entries) in installed.plugins {
             // M1: user > project > local > 첫 번째 — 단일 행 표시. 멀티-scope 펼침은 M2+.
             let primary = entries.first(where: { $0.scope == .user })
@@ -129,6 +145,7 @@ final class InventoryViewModel: ObservableObject {
                 ?? entries.first
             guard let entry = primary else { continue }
             let installPath = URL(fileURLWithPath: entry.installPath)
+            pluginInstallPaths.append((id: id, installPath: installPath))
             let manifest = try? await manifestReader.loadManifest(at: installPath)
             let counts = await manifestReader.countComponents(at: installPath)
             let parts = id.split(separator: "@", maxSplits: 1).map(String.init)
@@ -198,6 +215,7 @@ final class InventoryViewModel: ObservableObject {
         // M4 add-ons (settings 의 hooks + user assets) — 비파괴적, 실패는 빈 값.
         self.hooks = settings.hooks
         self.userAssets = await userAssetReader.loadAll()
+        self.mcps = await mcpReader.readAll(plugins: pluginInstallPaths)
     }
 
     // MARK: - M4 actions
@@ -223,6 +241,54 @@ final class InventoryViewModel: ObservableObject {
         await runMutation(label: "removeHook \(event)[\(index)]") { [settingsWriter] in
             try await settingsWriter.removeHook(event: event, at: index)
         }
+    }
+
+    // MARK: - MCP management
+
+    /// MCP enable/disable. 모든 현재 프로젝트의 disable 배열에 일괄 적용.
+    /// Optimistic UI: published `mcps` 행을 즉시 갱신.
+    func setMCPEnabled(_ mcp: MCP, enabled: Bool) async {
+        applyOptimisticMCPEnabled(id: mcp.id, enabled: enabled)
+        let kind: ClaudeJSONWriter.MCPSourceKind
+        switch mcp.source {
+        case .user: kind = .user
+        case .plugin: kind = .pluginJSON
+        }
+        let name = mcp.name
+        await runMutation(label: enabled ? "enable mcp \(name)" : "disable mcp \(name)") {
+            [claudeJSONWriter] in
+            try await claudeJSONWriter.setMCPEnabledEverywhere(
+                name: name,
+                source: kind,
+                enabled: enabled
+            )
+        }
+    }
+
+    /// User-scope MCP 제거 — `claude mcp remove <name>` 위임.
+    /// 플러그인 번들 MCP 에는 호출 금지 (UI 단에서 차단).
+    func removeMCP(_ mcp: MCP) async {
+        guard case .user = mcp.source else {
+            self.lastError = "Plugin-bundled MCP 는 제거 불가 (호스트 플러그인 uninstall 사용)"
+            return
+        }
+        let name = mcp.name
+        await runMutation(label: "remove mcp \(name)") { [mcpOps] in
+            try await mcpOps.removeUserScope(name: name)
+        }
+    }
+
+    private func applyOptimisticMCPEnabled(id: String, enabled: Bool) {
+        guard let idx = mcps.firstIndex(where: { $0.id == id }) else { return }
+        let old = mcps[idx]
+        mcps[idx] = MCP(
+            name: old.name,
+            source: old.source,
+            command: old.command,
+            args: old.args,
+            isEnabledEverywhere: enabled,
+            disabledInProjects: enabled ? [] : old.disabledInProjects
+        )
     }
 
     /// `claude plugin marketplace add` 위임 + 결과 반영.

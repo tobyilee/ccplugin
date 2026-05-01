@@ -2,11 +2,14 @@
 
 > 🇰🇷 한국어: [README.ko.md](README.ko.md)
 
-A native macOS menu bar app for managing the plugins, marketplaces, skills, and hooks under `~/.claude/` from a single window.
+**Current version: `0.2.0`** — see [CHANGELOG.md](CHANGELOG.md) for the release history.
+
+A native macOS menu bar app for managing the plugins, marketplaces, skills, hooks, and MCP servers under `~/.claude/` from a single window.
 
 ![Claude Code Plugin Manager — main window](docs/screenshots/main-window.png)
 
 > Full specification: [PRD.md](PRD.md) (v2.2, ~2,000 lines).
+> Release history & versioning policy: [CHANGELOG.md](CHANGELOG.md).
 
 ## Highlights
 
@@ -14,15 +17,16 @@ A native macOS menu bar app for managing the plugins, marketplaces, skills, and 
 - **Catalog search** — Auto-focused search field on the Browse tab; substring filter across name, marketplace, and description.
 - **Marketplace lifecycle** — Add / Refresh / Remove / toggle Auto-Update (with cascade confirmation dialogs).
 - **Plugin lifecycle** — Install (scope picker) / Uninstall (`--keep-data`) / Update / Enable·Disable.
+- **MCP management** *(new in 0.2.0)* — Disable / enable / remove installed MCP servers (user-scope + plugin-bundled) from the MCPs tab.
 - **Version visibility** — Plugin version column + per-marketplace `metadata.version` capsule + last-refresh timestamp.
-- **Auto-refresh** — `~/.claude/` tree changes are picked up by FSEvents and trigger a debounced reload.
+- **Auto-refresh** — `~/.claude/` tree (and `~/.claude.json`) changes are picked up by FSEvents and trigger a debounced reload.
 - **Safe mutations** — proper-lockfile-compatible FileLock + passthrough preservation + automatic backups.
 - **Diagnostics & cleanup** — Disk integrity checks and Orphaned Cache cleanup in the Diagnostics tab.
 
 ## Quick start (development)
 
 ```bash
-# PluginCore unit tests (97 tests)
+# PluginCore unit tests (109 tests)
 cd Packages/PluginCore && swift test
 
 # Build the app
@@ -79,7 +83,7 @@ ccplugin/
 │   │   │   ├── Watching/   # FSEvents
 │   │   │   ├── Paths/      # ~/.claude path resolution
 │   │   │   └── IDs/        # Regex + impersonation guards
-│   │   └── Tests/          # swift-testing (97 tests)
+│   │   └── Tests/          # swift-testing (109 tests)
 │   └── App/                 # SwiftUI MenuBarExtra
 │       └── Sources/App/
 │           ├── AppMain.swift      # @main + AppDelegate
@@ -146,19 +150,21 @@ Cross-join of every marketplace catalog plus an installed flag.
 - Filter substring matches against name, marketplace, and description.
 - Install button → scope picker sheet → CLI bridge.
 
-### User Assets / Hooks / Diagnostics
+### User Assets / Hooks / MCPs / Diagnostics
 - **User Assets**: direct scan of `~/.claude/{commands,agents,skills}`.
 - **Hooks**: the `settings.json` hooks tree + Add/Remove sheet.
+- **MCPs**: unified list of user-scope (`~/.claude.json#mcpServers`) and plugin-bundled (`<plugin>/.mcp.json`) MCPs. Toggle disables across every existing project at once; the trash button removes user-scope registrations via `claude mcp remove`. Plugin-bundled MCPs can only be disabled — uninstall the host plugin to remove them.
 - **Diagnostics**: disk integrity checks + Orphaned Cache cleanup (handles Q2 spike leftovers).
 
 ## Milestone status
 
-- ✅ M0 (spike + infrastructure) — Q2/Q8 spike complete, 97 unit tests
+- ✅ M0 (spike + infrastructure) — Q2/Q8 spike complete
 - ✅ M1 (read-only inventory) — Installed/Marketplaces/Browse tabs, FSEvents auto-refresh
 - ✅ M2 (marketplace mutations) — Add/Refresh/Remove/toggle Auto-Update, FileLock, BackupService
 - ✅ M3 (plugin lifecycle) — install/uninstall/enable/disable/update + ReloadHint banner
 - ✅ M4 (user assets + diagnostics) — UserAssets/Hooks/Diagnostics tabs, OrphanedCache cleanup
 - ✅ UX iteration — by-marketplace grouping, always-visible search, plugin/marketplace version display
+- ✅ **0.2.0** — MCPs tab (disable / enable / remove), `~/.claude.json` watching, 109 unit tests
 - ⏸ Distribution — Apple Developer certificate, Sparkle integration, Homebrew Cask (manual)
 
 ## Data model notes

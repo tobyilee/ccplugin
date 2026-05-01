@@ -47,4 +47,12 @@ public enum ClaudePaths {
     public static var userSettingsFile: URL {
         configDir.appending(path: "settings.json", directoryHint: .notDirectory)
     }
+
+    /// Claude Code 의 사용자 환경설정 파일 — `~/.claude.json`.
+    /// `mcpServers` (user-scope) 와 `projects[<path>].disabledMcp*Servers` 가 여기 산다.
+    /// `configDir` 와 별개의 파일 — sibling 위치.
+    public static var userClaudeJSONFile: URL {
+        FileManager.default.homeDirectoryForCurrentUser
+            .appending(path: ".claude.json", directoryHint: .notDirectory)
+    }
 }
